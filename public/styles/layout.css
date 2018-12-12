@@ -8,6 +8,7 @@ html {
 }
 *, *:before, *:after {
   box-sizing: inherit;
+
 }
 
 /*
@@ -18,8 +19,71 @@ body {
   margin: 0;
   color: #244751;
   background-color: #eee;
+  font-family:  "Roboto Condensed", Sans-Serif;
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+main.container {
+  width: 450px;
+  background-color: white;
+  margin: 0 auto;
+  padding-top: 200px;
+  height: 100%;
+}
+
+.tweet header {
+  background-color: #eee;
+  min-height: 200px;
+  padding: 10px;
+}
+
+.tweet {
+  border: 2px solid #a9a8a8;
+  border-radius: 1px;
+  margin: 0 35px ;
+  min-height: 40px;
+  opacity: 0.8;
+  transition: 0.7s;
+}
+
+.tweet:hover {
+  opacity: 5;
+}
+
+.tweet:hover .icons {
+  display: block;
+}
+
+.tweet header img {
+  float: left;
+  border-radius: 3px;
+  margin: 7px;
+}
+
+.author {
+  float: left;
+  padding: 8px 0 0 5px;
+  font-weight: 700;
+}
+
+.handler {
+  float: right;
+  margin: 10px;
+}
+
+.tweet footer {
+  border-top: #eee 2px solid;
+  padding: 9px;
+}
+
+.tweet-body {
+  padding: 20px;
+  word-wrap: break-word;
+}
+
+.icons {
+  float: right;
+  /*display: none;*/
+}
