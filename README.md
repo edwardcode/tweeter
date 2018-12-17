@@ -4,10 +4,10 @@ Tweeter is a simple, single-page Twitter clone.
 
 This repository is the starter code for the project: Students will fork and clone this repository, then build upon it to practice their HTML, CSS, JS, jQuery and AJAX front-end skills, and their Node, Express and MongoDB back-end skills.
 
-https://github.com/edwardcode/tweeter/blob/master/photoTweeter/0input.png
-https://github.com/edwardcode/tweeter/blob/master/photoTweeter/140%2B.png
-https://github.com/edwardcode/tweeter/blob/master/photoTweeter/beforeEnter.png
-https://github.com/edwardcode/tweeter/blob/master/photoTweeter/start.png
+![alt text](https://github.com/edwardcode/tweeter/blob/master/photoTweeter/0input.png)
+![alt text](https://github.com/edwardcode/tweeter/blob/master/photoTweeter/140%2B.png)
+![alt text](https://github.com/edwardcode/tweeter/blob/master/photoTweeter/beforeEnter.png)
+![alt text](https://github.com/edwardcode/tweeter/blob/master/photoTweeter/start.png)
 
 
 ## Getting Started
