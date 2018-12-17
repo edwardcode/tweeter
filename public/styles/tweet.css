@@ -1,0 +1,82 @@
+/*app.js add all features*/
+
+.tweet {
+  margin: 35px 2em;
+  border-radius: 8px;
+  border: 1px solid  ;
+  opacity: 0.6;
+}
+
+
+.tweet:hover {
+  opacity: 0.8;
+}
+
+
+.tweet header {
+
+  text-align：right
+  justify-content:center;
+  display: flex;
+  border-radius: 8px;
+  background: #ddd;
+  padding: 15px;
+}
+
+.tweet div.userData{
+  display: flex;
+
+}
+
+.tweet header h2{
+margin:10px 20px 40px 10px;
+}
+
+/*@ place */
+.tweet header span{
+  float:right;
+  margin:25px 3px 20px 120px;
+}
+
+
+
+.photo {
+  float: left;
+  height: 50px;
+  width: 60px;
+  border-radius: 8px;
+}
+
+
+
+
+
+div.tweetContent {
+  margin: 20px 20px;
+}
+
+div.tweetContent p {
+  word-wrap: break-word;
+  word-break: normal;
+}
+
+/*----------------------*/
+.tweet footer {
+  display: flex;
+  border-top: 1px solid #ccc;
+  justify-content: space-between;
+
+}
+
+.tweet footer p {
+  float:left;
+  margin: 10px;
+}
+
+
+.tweet footer ul.icons li {
+  display: inline-block;
+  margin: 0 20px 0 5px;
+  color: #78ebc4;
+}
+

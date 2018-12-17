@@ -1,90 +1,156 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
+//  Returns the DOM structure of a tweet
+let lastFetched = new Date(0);
+
+function createTweetElement(inputTweeter) {
+
+//know the time countback method
+  // var timeDiff = Math.floor(Date.now() - inputTweeter.created_at);
+  // var time = 0;
+
+  // if ((timeDiff / 1000) < 60) {
+  //   time = Math.round(timeDiff/1000) + " seconds ago";
+  // } else if (timeDiff / (1000*60) < 60) {
+  //   time = Math.round(timeDiff / (1000*60)) + " minutes ago";
+  // } else if (timeDiff / (1000*60*60) < 24) {
+  //   time = Math.round(timeDiff / (1000*60*60)) +" hours ago";
+  // } else {
+  //   time = Math.round(timeDiff / (1000*60*60*24)) + " days ago";
+  // }
+
+
+  var $tweet = $(
+    `<article class='tweet'>
+       <header>
+      <div class="userData">
+        <img class="photo" src="${escape(inputTweeter.user.avatars.small) }">
+        <h2>${escape(inputTweeter.user.name)}</h2>
+      </div>
+      <span>${escape(inputTweeter.user.handle)}</span>
+    </header>
+     <div class="tweetContent">
+      <p>${escape(inputTweeter.content.text)}</p>
+     </div>
+      <footer>
+      <p>${new Date(inputTweeter.created_at ).toDateString()}</p>
+       <ul class="icons">
+        <li><i class="far fa-flag"></i></li>
+        <li><i class="fas fa-retweet"></i></li>
+        <li><i class="fas fa-thumbs-up"></i></li>
+      </ul>
+      </footer>
+    </article>`
+  );
+
+  return $tweet;
+}
+
+
+//watchout  xss
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Rmeber prepend not append
+function renderTweets(tweets) {
+  for (let tweetData of tweets){
+    const $tweet = createTweetElement(tweetData);
+    $("#tweet-container").prepend($tweet)
+  }
+};
+
+
+
+
+
+
+//----------------------------
+
+function loadTweets( ) {
+  $.get("/tweets", function(tweets) {
+      renderTweets(tweets);
+
+  });
+};
+
+ // $.ajax('/tweets', { method: 'GET' })
+ //    .then(function loadTweets() {
+ //     tweets =>renderTweets(tweets);
+ //    });
+
+
+
+
+function showTheTweet(words) {
+  $.post("/tweets", $(words).serialize(),function(){
+    loadTweets();
+  });
+  $("section.new-tweet textarea").val("");
+  $("section.new-tweet span.counter").text("140");
+};
+
+
+
+
+
+
+
 $(document).ready(function() {
 
-  function createTweetElement (data){
-    let tweetAll = `
-         <article class="tweets">
-          <header>
-            <img src= ${data.user.avatars.small} />
-            <span class="author">${data.user.name}</span>
-            <span class="handler">${data.user.handle}</span>
-          </header>
-          <div class="tweet-body">${data.content.text}</div>
-          <footer>
-            <span>x days ago</span>
-            <i class="fas fa-flag"></i>
-            <i class="fas fa-retweet"></i>
-            <i class="fas fa-heart"></i>
-          </footer>
-        </article>
-       `;
-    return $(tweetAll);
-  };
+  loadTweets();
+
+  $("button.composeButton").on("click", function() {
+    $("section.new-tweet").slideToggle() ;
+    $("#new-tweet-content").focus();
+  });
+
+
+       // $("a").on("click",function(){
+       //    if($("div").is(":hidden")){
+       //      $("div").show();
+       //   }else{
+       //  $("div").hide();
+       //   }
+       //   })
 
 
 
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": {
-          "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-          "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-          "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-        },
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    {
-      "user": {
-        "name": "Descartes",
-        "avatars": {
-          "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-          "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-          "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-        },
-        "handle": "@rd" },
-      "content": {
-        "text": "Je pense , donc je suis"
-      },
-      "created_at": 1461113959088
-    },
-    {
-      "user": {
-        "name": "Johann von Goethe",
-        "avatars": {
-          "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-          "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-          "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-        },
-        "handle": "@johann49"
-      },
-      "content": {
-        "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-      },
-      "created_at": 1461113796368
-    }
-  ];
 
 
 
-   function renderTweets(tweets){
-    for (let tweetData of tweets) {
-      const $tweet = createTweetElement(tweetData);
-      $(".container").append($tweet);
+
+
+
+   //only input >0,<140 can tweet
+    $("section.new-tweet form").on("submit", function(event) {
+      event.preventDefault();
+
+    var errorMsg = $("div#error-msg");
+    var tweetLength = $("section.new-tweet textarea").val().length;
+
+    if (!tweetLength  ) {
+
+      errorMsg.text("Share something to the world!").slideDown();
+    } else if (tweetLength > 140) {
+
+      errorMsg.text("Sorry 140 characters max").slideDown();
+    } else {
+      $("div#error-msg").slideUp()
+      showTheTweet(this);
     }
 
-   };
-
-   renderTweets(data);
-
-
+  });
 });

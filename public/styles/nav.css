@@ -1,25 +1,45 @@
+/*day1*/
 #nav-bar {
   position: fixed;
   top: 0;
   height: 80px;
   width: 100%;
-  background-color: #00a087;
+  background: #00a087;
   color: #e8fdff;
-  padding: 0 2em;
-  z-index: 9999;
+  padding: 0px 2em;
+  z-index: 1;
 }
 
-
+/*day1*/
 #nav-bar .logo {
-  width: 80px;
+  float: left;
   height: 80px;
-  float: left;
+  width: 80px;
 }
 
-#nav-bar .header {
+/*day1*/
+
+#nav-bar .heading {
+  margin-left: 10px;
   float: left;
-  padding-left: 10px;
   font-size: 2em;
-  line-height: 70px;
+  line-height: 75px;
 }
 
+
+
+
+div#nav-button .composeButton {
+  float: right ;
+  color: #00a087;
+  opacity: 0.7;
+  margin: 10px 10px 10px 900px;
+  width: 100px;
+  height: 50px;
+  border-radius: 8px;
+  border: 5px ;
+}
+
+div#nav-button .composeButton:hover {
+  opacity: 1;
+}

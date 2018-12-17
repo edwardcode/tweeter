@@ -1,34 +1,39 @@
-.new-tweet textarea {
-  padding: 5px;
-  width: 100%;
-}
-
-.counter {
-  float: right;
-}
-
-/*youcan also use father-childway to form > input*/
-.tweetBut {
-  float: left;
-}
-
-.new-tweet h2 {
-  text-align: left;
-  border-bottom: 3px solid black;
-}
-
-.new-tweet {
-  padding: 0.5em 0.5em 2em;
-  background-color: #eee;
-  border: 1px solid #a9a8a8;
-  border-radius: 5px;
-  margin: 0 2em 3em;
-}
-
-#error-msg {
-  padding: 2em;
-  border-radius: 3px;
-  border: 2px solid #a9a8a8;
-  background-color: #dc2525;
+/*---------------------------need to be checked
+day1*/
+section.new-tweet {
   display: none;
+  margin: 0 2em 0 2em;
+  padding: 10px;
+  background: #cccccc;
+  border-radius: 8px;
+  border: 5px ;
+}
+
+/*
+day1*/
+section.new-tweet h2 {
+  border-bottom: 2px solid black;
+}
+
+section.new-tweet textarea {
+  width: 370px;
+  height: 120px;
+  padding: 10px 10px;
+}
+
+span.counter {
+  float: right;
+  font-weight:bold
+}
+
+
+div#error-msg {
+  display: none;
+  font-weight:bold ;
+  color: black;
+  margin: 20px 2em 20px;
+  background: red;
+  padding: 10px;
+  border-radius: 7px;
+  border: 2px;
 }
